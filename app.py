@@ -49,4 +49,4 @@ api.add_resource(RemoveRemoteMemory, '/api/memory/removeremotememory')
 api.add_resource(MemoryTest, '/api/memory/memorytest')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5003, debug=True)
+    app.run(host='0.0.0.0', port=5003, debug=False)
