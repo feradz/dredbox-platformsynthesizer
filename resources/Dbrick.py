@@ -1,6 +1,4 @@
 from flask_restful import fields, marshal_with, reqparse, Resource, request
-from webargs import fields, validate
-from webargs.flaskparser import use_kwargs, parser
 import requests
 
 post_parser = reqparse.RequestParser()

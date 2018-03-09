@@ -1,5 +1,4 @@
 from flask_restful import fields, marshal_with, reqparse, Resource, request
-import serial
 import json
 import requests
 
