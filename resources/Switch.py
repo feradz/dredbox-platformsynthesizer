@@ -22,7 +22,7 @@ post_parser.add_argument(
     help='Switch Id', )
 
 post_parser.add_argument(
-    'a',
+    'port',
     required=True, )
 
 post_parser.add_argument(
@@ -49,8 +49,8 @@ class SwitchConnectPorts(Resource):
     def post(self):
         args = self.post_parser_copy.parse_args()
         ipAddress = args.ipAddress
-        port = args.a
-        del args['a']
+        port = args.port
+        del args['port']
         del args['ipAddress']
         url = "http://"+ipAddress+":"+port+"/api/switch/connectports"
         r = requests.post(url, data=args)
