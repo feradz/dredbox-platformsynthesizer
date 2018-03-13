@@ -47,7 +47,7 @@ class SwitchConnectPorts(Resource):
     post_parser_copy.add_argument('ports', location='json')
 
     def post(self):
-        args = post_parser.parse_args()
+        args = self.post_parser_copy.parse_args()
         ipAddress = args.ipAddress
         port = args.port
         del args['port']
@@ -62,7 +62,7 @@ class SwitchDisconnectPort(Resource):
     post_parser_copy.add_argument('ports', location='json')
 
     def post(self):
-        args = post_parser.parse_args()
+        args = self.post_parser_copy.parse_args()
         ipAddress = args.ipAddress
         port = args.port
         del args['port']
@@ -77,7 +77,7 @@ class SwitchPortEndPoint(Resource):
     post_parser_copy.add_argument('ports', location='json')
 
     def post(self):
-        args = post_parser.parse_args()
+        args = self.post_parser_copy.parse_args()
         ipAddress = args.ipAddress
         port = args.port
         del args['port']
