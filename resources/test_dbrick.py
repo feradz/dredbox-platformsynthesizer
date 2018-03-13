@@ -44,14 +44,14 @@ class TestDbrickApi(unittest.TestCase):
         headers = {'Content-Type': 'application/json'}
         payload = '{"dRackId":"0","dBoxId":"1","dBrickId":"11","ipAddress":"10.128.0.1","port":"5001"}'
         response = requests.get(url, data=payload, headers=headers)
-        self.assertIn('[0, 1, 11, "/dev/sda"]', response.json())
+        self.assertIn('[0, 1, 11]', response.json())
 
     def testDbrickSetBootSource(self):
         url = "http://localhost:5003/api/dbrick/setbootsource"
         headers = {'Content-Type': 'application/json'}
         payload = '{"dRackId":"0","dBoxId":"1","dBrickId":"11", "path":"/dev/sda","ipAddress":"10.128.0.1","port":"5001"}'
         response = requests.post(url, data=payload, headers=headers)
-        self.assertIn('[0, 1, 11, "/dev/sda"]', response.json())
+        self.assertNotIn('Error', response.json())
 
     def testDbrickLink(self):
         url = "http://localhost:5003/api/dbrick/links"
