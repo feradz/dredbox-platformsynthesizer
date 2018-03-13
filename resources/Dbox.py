@@ -43,7 +43,7 @@ class DboxTemperature(Resource):
         port = args.port
         del args['port']
         del args['ipAddress']
-        url = "http://"+ipAddress+":"+port+"/api/dbox/temperature'"
+        url = "http://"+ipAddress+":"+port+"/api/dbox/temperature"
         r = requests.get(url, data=args)
         return r.text
 
