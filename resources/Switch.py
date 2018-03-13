@@ -52,8 +52,9 @@ class SwitchConnectPorts(Resource):
         port = args.port
         del args['port']
         del args['ipAddress']
+        headers = {'Content-Type': 'application/json'}
         url = "http://"+ipAddress+":"+port+"/api/switch/connectports"
-        r = requests.post(url, data=args)
+        r = requests.post(url, data=args, headers=headers)
         return r.text
 
 
@@ -67,8 +68,9 @@ class SwitchDisconnectPort(Resource):
         port = args.port
         del args['port']
         del args['ipAddress']
+        headers = {'Content-Type': 'application/json'}
         url = "http://"+ipAddress+":"+port+"/api/switch/disconnectports"
-        r = requests.post(url, data=args)
+        r = requests.post(url, data=args, headers=headers)
         return r.text
 
 
