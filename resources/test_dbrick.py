@@ -1,21 +1,23 @@
 import unittest
 import requests
-
+import time
 
 class TestDbrickApi(unittest.TestCase):
 
     def testDbrickSwitchOn(self):
         url = "http://localhost:5003/api/dbrick/switchon"
         headers = {'Content-Type': 'application/json'}
-        payload = '{"dRackId":"0","dBoxId":"1","dBrickId":"11","ipAddress":"10.128.0.1","port":"5001"}'
+        payload = '{"dRackId":"0","dBoxId":"1","dBrickId":"0","ipAddress":"10.128.0.1","port":"5001"}'
         response = requests.post(url, data=payload, headers=headers)
+        time.sleep(3)
         self.assertIn('0', response.json())
 
     def testDbrickSwitchOff(self):
         url = "http://localhost:5003/api/dbrick/switchoff"
         headers = {'Content-Type': 'application/json'}
-        payload = '{"dRackId":"0","dBoxId":"1","dBrickId":"11","ipAddress":"10.128.0.1","port":"5001"}'
+        payload = '{"dRackId":"0","dBoxId":"1","dBrickId":"0","ipAddress":"10.128.0.1","port":"5001"}'
         response = requests.post(url, data=payload, headers=headers)
+        time.sleep(3)
         self.assertIn('0', response.json())
 
     def testDbrickIsOn(self):
