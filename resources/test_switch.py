@@ -14,7 +14,7 @@ class TestSwitchApi(unittest.TestCase):
     def testSwitchConnectPorts(self):
         url = "http://localhost:5003/api/switch/connectports"
         headers = {'Content-Type': 'application/json'}
-        payload = '{"dRackId":"0","dBoxId":"1","switchId":"11", "ports": "[[11,22],[12,25]]","ipAddress":"10.128.0.1","a":"5001"}'
+        payload = '{"dRackId":"0","dBoxId":"1","switchId":"11", "ports": "[[11,22],[12,25]]","ipAddress":"10.128.0.1","port":"5001"}'
         response = requests.post(url, data=payload, headers=headers)
         self.assertNotIn("Error", response.json())
 
