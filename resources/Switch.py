@@ -74,7 +74,7 @@ class SwitchDisconnectPort(Resource):
 
 class SwitchPortEndPoint(Resource):
     post_parser_copy = post_parser.copy()
-    post_parser_copy.add_argument('ports', location='json')
+    post_parser_copy.add_argument('portId', location='json')
 
     def post(self):
         args = self.post_parser_copy.parse_args()
