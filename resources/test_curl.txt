@@ -1,0 +1,16 @@
+curl -H "Content-Type: application/json" -X POST -d '{"dRackId":"0","dBoxId":"1","switchId":"11","ipAddress":"10.128.0.1","port":"5001", "ports": "[[13,14],[41,37]]"}' http://localhost:5003/api/switch/connectports
+
+curl -H "Content-Type: application/json" -X GET -d '{"dRackId":"0","dBoxId":"1","switchId":"11", "ipAddress":"10.128.0.1","port":"5001"}' http://localhost:5003/api/switch/portsinfo
+
+curl -H "Content-Type: application/json" -X POST -d '{"dRackId":"0","dBoxId":"1","switchId":"11", "portId": "13", "ipAddress":"10.128.0.1","port":"5001"}' http://localhost:5003/api/switch/portendpoint
+
+curl -H "Content-Type: application/json" -X POST -d '{"dRackId":"0","dBoxId":"1","switchId":"11","ipAddress":"10.128.0.1","port":"5001", "ports": "[[13,14],[41,37]]"}' http://localhost:5003/api/switch/disconnectports
+
+
+curl -H "Content-Type: application/json" -X POST -d '{"dRackId":"0","dBoxId":"1","dBrickId":"0", "ipAddress":"10.128.0.1","port":"5001"}' http://localhost:5003/api/dbrick/switchon
+
+curl -H "Content-Type: application/json"  -X GET -d '{"dRackId":"0","dBoxId":"1","dBrickId":"0", "ipAddress":"10.128.0.1","port":"5001"}' http://localhost:5003/api/dbrick/ison
+
+curl -H "Content-Type: application/json" -X POST -d '{"dRackId":"0","dBoxId":"1","dBrickId":"0", "ipAddress":"10.128.0.1","port":"5001"}' http://localhost:5003/api/dbrick/switchoff
+
+curl -H "Content-Type: application/json"  -X GET -d '{"dRackId":"0","dBoxId":"1","dBrickId":"0", "ipAddress":"10.128.0.1","port":"5001"}' http://localhost:5003/api/dbrick/ison
