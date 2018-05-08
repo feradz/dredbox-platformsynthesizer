@@ -49,12 +49,5 @@ api.add_resource(AddRemoteMemory, '/api/memory/addremotememory')
 api.add_resource(RemoveRemoteMemory, '/api/memory/removeremotememory')
 api.add_resource(MemoryTest, '/api/memory/memorytest')
 
-api.add_resource(InitShmem, '/api/sdm/initshmem')
-api.add_resource(JoinShmem, '/api/sdm/joinshmem')
-api.add_resource(LeaveShmem, '/api/sdm/leaveshmem')
-api.add_resource(FreeShmem, '/api/sdm/freeshmem')
-api.add_resource(LockMem, '/api/sdm/lockmem')
-api.add_resource(UnlockMem, '/api/sdm/unlockmem')
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5003, debug=False)
