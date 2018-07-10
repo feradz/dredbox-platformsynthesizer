@@ -1,41 +1,8 @@
 from flask_restful import fields, marshal_with, reqparse, Resource, request
 import json
 import requests
+import urllib2
 post_parser = reqparse.RequestParser()
-post_parser2 = reqparse.RequestParser()
-
-post_parser2.add_argument(
-    'memoryAddress',
-    required=True,
-    help='memoryAddress', )
-post_parser.add_argument(
-    'startA',
-    required=True,
-    help='Start Address', )
-post_parser.add_argument(
-    'endA',
-    required=True,
-    help='End Address', )
-post_parser.add_argument(
-    'port',
-    required=True,
-    help='Port', )
-post_parser.add_argument(
-    'offset',
-    required=True,
-    help='Memory Offset', )
-post_parser.add_argument(
-    'action',
-    required=True,
-    help='Action', )
-post_parser.add_argument(
-    'ComputeBrickIP', required=True, help='Compute Brick IP')
-post_parser.add_argument(
-    'port',
-    required=True, )
-post_parser.add_argument(
-    'ipAddress',
-    required=True, )
 
 
 class MemoryTest(Resource):
@@ -83,23 +50,28 @@ class MemoryTest(Resource):
 
 class AddRemoteMemory(Resource):
     def post(self):
-        args = post_parser.parse_args()
-        ipAddress = args.ipAddress
-        port = args.port
-        del args['port']
-        del args['ipAddress']
+        jsonData = request.get_json(force=True)
+        ipAddress = jsonData['ipAddress']
+        port = jsonData['port']
+        del jsonData['port']
+        del jsonData['ipAddress']
+        print(jsonData)
         url = "http://"+ipAddress+":"+port+"/api/memory/addremotememory"
-        r = requests.post(url, data=args)
-        return r.text
+        req = urllib2.Request(url)
+        req.add_header('Content-Type', 'application/json')
+        r = urllib2.urlopen(req, json.dumps(jsonData))
+        return r.read()
 
 
 class RemoveRemoteMemory(Resource):
     def post(self):
-        args = post_parser.parse_args()
-        ipAddress = args.ipAddress
-        port = args.port
-        del args['port']
-        del args['ipAddress']
+        jsonData = request.get_json(force=True)
+        ipAddress = jsonData['ipAddress']
+        port = jsonData['port']
+        del jsonData['port']
+        del jsonData['ipAddress']
         url = "http://"+ipAddress+":"+port+"/api/memory/removeremotememory"
-        r = requests.post(url, data=args)
-        return r.text
+        req = urllib2.Request(url)
+        req.add_header('Content-Type', 'application/json')
+        r = urllib2.urlopen(req, json.dumps(jsonData))
+        return r.read()

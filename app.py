@@ -5,8 +5,7 @@ from resources.Switch import Switch
 from resources.Dbrick import Dbrick, DbrickSwitchOn, DbrickSwitchOff, DbrickIsOn, DbrickPower, DbrickGetBootSource, DbrickSetBootSource, DbrickLinks, DbrickPing
 from resources.Dbox import Dbox, DboxTemperature, DboxPower, DboxFanSpeed, DboxPing
 from resources.Switch import Switch, SwitchConnectPorts, SwitchDisconnectPort, SwitchPortEndPoint, SwitchPortsInfo, SwitchPowerUtilization
-from resources.Memory import AddRemoteMemory, RemoveRemoteMemory, MemoryTest
-from resources.SDM import InitShmem, JoinShmem, LeaveShmem, FreeShmem, LockMem, UnlockMem
+from resources.Memory import AddRemoteMemory, RemoveRemoteMemory
 
 errors = {
     'ResourceDoesNotExist': {
@@ -47,7 +46,6 @@ api.add_resource(SwitchPowerUtilization, '/api/switch/powerutilization')
 
 api.add_resource(AddRemoteMemory, '/api/memory/addremotememory')
 api.add_resource(RemoveRemoteMemory, '/api/memory/removeremotememory')
-api.add_resource(MemoryTest, '/api/memory/memorytest')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5003, debug=False)
+    app.run(host='0.0.0.0', port=5003, debug=True)
